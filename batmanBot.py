@@ -21,20 +21,21 @@ api = tweepy.API(auth)
 
 
 # Get raw text as string.
-with open('CONFIG') as f:
+with open('PATH TO TEXT FILE') as f:
     text = f.read()
 
 # Build the model.
 text_model = markovify.Text(text)
 
-#making a quick sentence
 
 
 #Good tweet size, then tweet
 while True:
     #perfect tweet size, 140. I know 280 is the limit, but c'mon...140 is just elegant
     sentence = text_model.make_short_sentence(140)
+    #update_status(status=string) from tweepy
     api.update_status(status=sentence)
+    #print just to see what it tweeted within program itself
     print ("Tweeted: " + sentence)
     #Wait 1.5 hours before tweeting again
     time.sleep(5400)
